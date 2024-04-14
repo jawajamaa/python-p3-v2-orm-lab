@@ -187,4 +187,11 @@ class Employee:
 
     def reviews(self):
         """Return list of reviews associated with current employee"""
-        pass
+        reviews_list = list()
+        from review import Review
+        for review in Review.get_all():
+            if review.employee_id == self.id:
+                reviews_list.append(review)
+                # breakpoint()
+        return reviews_list
+        # return [review for review in Review.get_all() if review.employee_id == self.employee_id]
